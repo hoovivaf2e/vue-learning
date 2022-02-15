@@ -21,9 +21,14 @@ createApp({
             this.getProductList();
         })
         .catch((err) => {
-          alert('checkLogin: ', err.data.message);
+          console.log('checkLogin: ', err.data.message);
+          alert('登入失敗，請重新登入');
           window.location = 'login.html';
         })
+      },
+      isEnabled(item, is_enabled) {
+        // 這裡的啟用似乎沒有改到資料庫裡的資料，是否有能修改資料的api呢？
+        is_enabled ? item.is_enabled = 0 : item.is_enabled = 1;
       },
       viewDetails(item) {
         this.itemDetails = item
@@ -35,7 +40,8 @@ createApp({
           this.products = response.data.products.splice(0,3);
         })
         .catch((error) => {
-            alert('getProductList: ', error.response);
+            console.log('getProductList: ', error.response);
+            alert('抓取資料失敗');
         })
       }
     },

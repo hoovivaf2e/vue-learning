@@ -19,7 +19,8 @@ createApp({
                 document.cookie = `mainToken=${token}; expires=${new Date(expired)}; path=/`;
                 window.location = 'productList.html';
             }).catch((error) => {
-                alert(error.data.message);
+                console.log(error.data.message);
+                alert('驗證錯誤');
             });
         }
     }

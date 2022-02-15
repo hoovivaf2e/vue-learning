@@ -80,7 +80,6 @@ viewDetails(item)">查看細節</button>
                 </div>
               </div>
             </div>
-            <!-- 多圖是在 -->
             <span v-for="(image, id) in itemDetails.imagesUrl" v-bind:key="id">
               <img v-if="image" v-bind:src="image" class="images m-2">
             </span>

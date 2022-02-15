@@ -21,8 +21,8 @@ createApp({
             this.getProductList();
         })
         .catch((err) => {
-          alert(err.data.message);
-          window.location = 'index.html';
+          alert('checkLogin: ', err.data.message);
+          window.location = 'login.html';
         })
       },
       viewDetails(item) {

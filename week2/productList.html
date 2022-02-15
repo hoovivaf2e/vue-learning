@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/products.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+<div id="app">
+    <div class="container">
+      <div class="row py-3">
+        <div class="col-md-6">
+          <h2>產品列表</h2>
+          <table class="table table-hover mt-4">
+            <thead>
+              <tr>
+                <th width="150">產品名稱</th>
+                <th width="120">
+                  原價
+                </th>
+                <th width="120">
+                  售價
+                </th>
+                <th width="150">
+                  是否啟用
+                </th>
+                <th width="120">
+                  查看細節
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 列表渲染開始 -->
+              <tr v-for="(item, index) in products" :key="item.id">
+                <td width="150">{{ item.title }}</td>
+                <td width="120">
+                  {{ item.origin_price }}
+                </td>
+                <td width="120">
+                  {{ item.price }}
+                </td>
+                <td width="150">
+                  <span class="text-success" v-if="item.is_enabled">啟用</span>
+                  <span v-else>未啟用</span>
+                </td>
+                <td width="120">
+                  <button type="button" class="btn btn-primary" @click="
+viewDetails(item)">查看細節</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>目前有 <span>{{ products.length }}</span> 項產品</p>
+          <!-- 列表渲染結束 -->
+        </div>
+        <div class="col-md-6">
+          <h2>單一產品細節</h2>
+          <!-- html中 的 template 標籤中的內容在頁面中不會顯示，因為它設置了 display:none 屬性。而且 template 標籤不支持v-show 指令-->
+          <template v-if="itemDetails.id">
+            <!-- 在點擊<查看細節>時傳送了選中的物件，故在viewDetails(item) 中將 item（選中的物件）傳遞給自己設的變數      itemDetails
+ -->
+            <div class="card mb-3">
+              <img :src="itemDetails.imageUrl" class="card-img-top primary-image" alt="主圖">
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ itemDetails.title }}
+                  <span class="badge bg-primary ms-2">{{ itemDetails.category }}</span>
+                </h5>
+                <p class="card-text">商品描述：{{ itemDetails.description }}</p>
+                <p class="card-text">商品內容：{{ itemDetails.content }}</p>
+                <div class="d-flex">
+                  <p class="card-text me-2">{{ itemDetails.origin_price }}</p>
+                  <p class="card-text text-secondary"><del>{{ itemDetails.price }}</del></p>
+                  {{ itemDetails.unit }} / 元
+                </div>
+              </div>
+            </div>
+            <!-- 多圖是在 -->
+            <span v-for="(image, id) in itemDetails.imagesUrl" v-bind:key="id">
+              <img v-if="image" v-bind:src="image" class="images m-2">
+            </span>
+          </template>
+          <p class="text-secondary" v-else>請選擇一個商品查看</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.min.js' integrity='sha512-Xk3wWei2TGrsh9kDSBKUMIjw/86sLUvhtnv9f7fOuIwhhiUTKz8szkWkzHthrM5Bb3Bu9idSzkxOrkzhcneuiw==' crossorigin='anonymous'></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+  <!-- Bootstrap JavaScript-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="./js/productList.js" type="module"></script>
+
+</body>
+</html>

@@ -20,6 +20,8 @@ createApp({
     },
     computed: {
       sortProducts() {
+        // 搭配 sorting 方法一起使用
+        // sort 方法傳入兩個值做比對，如 productsA.price : productsB.price
         const newProduct = this.products.sort((a, b) => {
           return this.ascending ? a[this.sortBy] - b[this.sortBy] : b[this.sortBy] - a[this.sortBy]
         })
@@ -42,12 +44,6 @@ createApp({
           window.location = 'login.html';
         })
       },
-      // isEnabled(item, is_enabled) {
-      //   is_enabled ? item.is_enabled = 0 : item.is_enabled = 1;
-      // },
-      // viewDetails(item) {
-      //   this.itemDetails = item
-      // },
       openModal(update, item) {
         if (update === 'new') {
           this.isNew = true;
@@ -84,10 +80,6 @@ createApp({
           url = `${this.apiUrl}/${this.apiPath}/admin/product/${this.tempProduct.id}`;
           http = 'put';
         }
-        console.log('this.isNew: ', this.isNew);
-        console.log('http: ', http);
-        console.log('this.tempProduct: ', this.tempProduct);
-
         axios[http](url, {data: this.tempProduct})
         .then(response => {
           alert(response.data.message);
@@ -116,6 +108,7 @@ createApp({
         this.tempProduct.imagesUrl.push('');
       },
       sorting(sortBy) {
+        // 點擊欄位時會將點擊的欄位名稱傳入，亦變換 ascending值，使其可以一直點擊
         this.sortBy = sortBy;
         this.ascending = !this.ascending;
       }
@@ -123,9 +116,7 @@ createApp({
     mounted() { // 使用mounted是因要在畫面完全生成後再擷取 Dom 元素
       this.checkLogin();
       // 建立 bootstrap Modal 實例
-      // console.log('this.$refs.updateModal: ', this.$refs.updateModal);
       updateModal = new bootstrap.Modal(this.$refs.updateModal, { keyboard: false });
-      // console.log('this.$refs.deleteModal: ', this.$refs.deleteModal);
       deleteModal = new bootstrap.Modal(this.$refs.deleteModal, { keyboard: false });
       
     }

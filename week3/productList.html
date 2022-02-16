@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="css/products.css"> -->
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
@@ -42,7 +41,7 @@
             </thead>
             <!-- 列表渲染開始 -->
             <tbody>
-              <!-- 點擊 origin_price 跟 price 可以進行排序，在computed中撰寫的方法 sortProducts 取代原本的變數 products[] -->
+              <!-- 點擊 origin_price 跟 price 可以進行排序，在 computed 中撰寫的方法 sortProducts 取代原本的變數 products[] -->
               <tr v-for="(item, index) in sortProducts" :key="item.id">
                 <td>{{ item.category }}</td>
                 <td>{{ item.title }}</td>
@@ -102,6 +101,7 @@
                   <img class="img-fluid" :src="tempProduct.imageUrl">
                 </div>
                 <h3>多圖新增</h3>
+                <!-- Array.isArray函式會檢查傳入的值是否為陣列(Array)，之後回傳布林值 -->
                 <div v-if="Array.isArray(tempProduct.imagesUrl)">
                   <div class="mb-1" v-for="(image, key) in tempProduct.imagesUrl" :key="key">
                     <div class="mb-3">
@@ -110,6 +110,7 @@
                       <img class="img-fluid" :src="tempProduct.imagesUrl[key]">
                     </div>
                   </div>
+                  <!-- 不太清楚這裡這樣判斷的用意是什麼？ -->
                   <div v-if="!tempProduct.imagesUrl.length || tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]">
                     <button class="btn btn-sm btn-outline-primary d-block w-100" type="button" @click="tempProduct.imagesUrl.push('')">新增圖片</button>
                   </div>
@@ -164,6 +165,7 @@
 
                 <div class="mb-3 form-check">
                   <label class="form-check-label">是否啟用</label>
+                  <!-- checkbox 使用 true-value 及 false-value 分別綁定勾選及未勾選時的資料 -->
                   <input class="form-check-input" type="checkbox" v-model="tempProduct.is_enabled" :true-value="1" :false-value="0">
                 </div>
 

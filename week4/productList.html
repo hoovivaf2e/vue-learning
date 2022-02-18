@@ -79,6 +79,8 @@
     </div> <!-- Container -->
 
     <!-- Update Modal -->
+    <!-- 內層：product  外層：tempProduct  前內後外 -->
+    <!-- 內層方法：update  外層方法：getProduct  前內後外 -->
     <update-modal ref="updateModal" :product="tempProduct" :is-new="isNew" @update="getProducts"></update-modal>
     
     <!-- Delete Modal -->

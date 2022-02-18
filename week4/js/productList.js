@@ -116,6 +116,7 @@ app.component('updateModal', {
       .then(response => {
         alert(response.data.message);
         updateModal.hide();
+        // 內層方法：update  外層方法：getProduct
         this.$emit('update');
       })
       .catch((error) => {
@@ -157,6 +158,7 @@ app.component('deleteModal', {
       .then(response => {
         alert(response.data.message);
         deleteModal.hide();
+        // 內層方法：update  外層方法：getProduct
         this.$emit('update');
       })
       .catch((error) => {

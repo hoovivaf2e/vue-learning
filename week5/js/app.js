@@ -87,9 +87,9 @@ Vue.createApp({
       this.isLoadingItem = 1;
       axios.delete(`${apiUrl}/api/${apiPath}/carts`)
       .then((res)=>{
-        alert(response.data.message);
-        this.getCart();
         this.isLoadingItem = 0;
+        alert(res.data.message);
+        this.getCart();
       })
       .catch((err)=> {
         alert(err.data.message);

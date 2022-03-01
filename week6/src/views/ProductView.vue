@@ -18,7 +18,7 @@
                 class="btn btn-primary">
                 查看更多
                 </router-link>
-                <button class="btn btn-danger" @click.prevent="addToCart(product.id)">加入購物車</button>
+                <button class="btn btn-danger" @click="addToCart(product.id)">加入購物車</button>
               </div>
             </div>
           </div>

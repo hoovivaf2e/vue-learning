@@ -87,7 +87,7 @@ createApp({
           this.getProducts();
         })
         .catch((error) => {
-            console.log('updateProducts: ', error.response);
+            alert(error.data.message);
             alert('編輯資料失敗');
         })
       },

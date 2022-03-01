@@ -50,11 +50,11 @@
                 <td>
                   <div class="btn-group btn-group-sm">
                     <button type="button" class="btn btn-outline-secondary"
-                      @click.prevent="openProductModal(product.id)">
+                      @click="openProductModal(product.id)">
                       查看更多
                     </button>
                     <button type="button" class="btn btn-outline-danger"
-                      @click.prevent="addToCart(product.id)"
+                      @click="addToCart(product.id)"
                       :disabled="isLoadingItem === product.id">
                       <span v-show="isLoadingItem === product.id"
                       class="spinner-grow spinner-grow-sm"></span>
@@ -72,7 +72,7 @@
                  當讀取 cartData.carts.length === 0 時出現 TypeError: Cannot Read Property undefined ('length')
                  最常見的原因是在渲染 UI 元件時，不正確地初始化狀態
                  解決方法為： 使用預設值進行狀態初始化-->
-            <button class="btn btn-outline-danger" type="button" @click.prevent="clearCart" :disabled="cartData.carts.length === 0">
+            <button class="btn btn-outline-danger" type="button" @click="clearCart" :disabled="cartData.carts.length === 0">
               <span v-show="isLoadingItem === 1 " class="spinner-grow spinner-grow-sm"></span>
               清空購物車
             </button>
@@ -91,7 +91,7 @@
                 <tr v-for="item in cartData.carts" :key="item.id">
                   <td>
                     <button type="button" class="btn btn-outline-danger btn-sm"
-                      @click.prevent="removeCartItem(item.id)">
+                      @click="removeCartItem(item.id)">
                       x
                     </button>
                   </td>
@@ -222,7 +222,7 @@
                   <div>
                     <div class="input-group">
                         <input type="number" class="form-control" v-model.number="qty" min="1">
-                      <button type="button" class="btn btn-primary" @click.prevent="addToCart">加入購物車</button>
+                      <button type="button" class="btn btn-primary" @click="addToCart">加入購物車</button>
                     </div>
                   </div>
                 </div>

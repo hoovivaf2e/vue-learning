@@ -23,7 +23,7 @@
         </ul>
       </div>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-outline-primary" type="button" @click.prevent="logout">登出</button>
+        <button class="btn btn-outline-primary" type="button" @click="logout">登出</button>
       </div>
     </div>
   </nav>

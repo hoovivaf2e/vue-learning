@@ -27,7 +27,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click.prevent="addToCart(product.id, qty)"
+              @click="addToCart(product.id, qty)"
             >
               加入購物車
             </button>

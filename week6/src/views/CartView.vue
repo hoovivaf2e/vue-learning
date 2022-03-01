@@ -6,7 +6,7 @@
       <button
         class="btn btn-outline-danger"
         type="button"
-        @click.prevent="clearCart" :disabled="cartData.carts.length === 0"
+        @click="clearCart" :disabled="cartData.carts.length === 0"
       >
         <span v-show="isLoadingItem === 1 " class="spinner-grow spinner-grow-sm"></span>
         清空購物車
@@ -26,7 +26,7 @@
           <tr v-for="item in cartData.carts" :key="item.id">
             <td>
               <button type="button" class="btn btn-outline-danger btn-sm"
-                @click.prevent="removeCartItem(item.id)">
+                @click="removeCartItem(item.id)">
                 x
               </button>
             </td>

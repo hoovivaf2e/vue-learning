@@ -22,7 +22,7 @@
           </li>
         </ul>
       </div>
-      <button type="button" class="btn btn-primary" @click.prevent="goTo('cart')">
+      <button type="button" class="btn btn-primary" @click="goTo('cart')">
         結帳
         <span class="badge rounded-pill bg-danger">{{cartData.carts.length}}</span>
       </button>

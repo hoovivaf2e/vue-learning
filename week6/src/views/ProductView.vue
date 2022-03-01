@@ -14,7 +14,7 @@
             </div>
             <div class="card-footer">
               <div class="d-flex justify-content-between">
-                <router-link :to="{name: 'product-item', params: {id: product.id}}"
+                <router-link :to="`/product/${product.id}`"
                 class="btn btn-primary">
                 查看更多
                 </router-link>

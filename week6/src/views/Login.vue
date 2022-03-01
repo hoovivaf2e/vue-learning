@@ -46,7 +46,7 @@ export default {
         .then((response) => {
           const { token, expired } = response.data;
           document.cookie = `mainToken=${token}; expires=${new Date(expired)}; path=/`;
-          this.$router.push({ name: 'admin' });
+          this.$router.push({ path: '/admin' });
         }).catch((error) => {
           console.log(error.data.message);
           alert('驗證錯誤');

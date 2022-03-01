@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
   {
@@ -12,12 +12,12 @@ const routes = [
         component: () => import('../views/Home.vue'),
       },
       {
-        path: 'product',
-        name: 'product',
+        path: 'product-list',
+        name: 'product-list',
         component: () => import('../views/ProductView.vue'),
       },
       {
-        path: 'productItem/:id',
+        path: 'product/:id',
         name: 'product-item',
         component: () => import('../views/ProductItemView.vue'),
       },
@@ -53,7 +53,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes,
   linkActiveClass: 'active',
 });

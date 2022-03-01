@@ -70,10 +70,12 @@ const app = createApp({
       getProducts(page = 1) {
         axios.get(`${this.apiUrl}/${this.apiPath}/admin/products?page=${page}`)
         .then(response => {
+          // 方法一
           // const { products, pagination } = response.data;
           // this.products = products;
           // this.pagination = pagination;
-          // 想詢問 上面的撰寫方式 跟 下面的撰寫方式 有效能上的差異嗎？
+          
+          // 方法二
           this.products = response.data.products;
           this.pagination = response.data.pagination;
         })

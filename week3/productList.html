@@ -14,7 +14,7 @@
     <div class="container">
       <div class="row py-3">
         <div class="col-md-12 mt-2 d-md-flex justify-content-md-end">
-          <button type="button" class="btn btn-primary" @click="openModal('new')">建立新的產品</button>
+          <button type="button" class="btn btn-primary" @click.prevent="openModal('new')">建立新的產品</button>
         </div>
         <div class="col-md-12">
           <table class="table table-hover mt-4">
@@ -22,13 +22,13 @@
               <tr>
                 <th width="120">分類</th>
                 <th>產品名稱</th>
-                <th width="100" @click="sorting('origin_price')">
+                <th width="100" @click.prevent="sorting('origin_price')">
                   原價
                 </th>
-                <th width="100" @click="sorting('price')">
+                <th width="100" @click.prevent="sorting('price')">
                   售價
                 </th>
-                <th width="100" @click="sorting('num')">
+                <th width="100" @click.prevent="sorting('num')">
                   數量
                 </th>
                 <th width="120">
@@ -61,8 +61,8 @@
                 <td>
                   <!-- Button trigger modal -->
                   <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-sm btn-outline-primary" @click="openModal('edit', item)">編輯</button>
-                    <button type="button" class="btn btn-sm btn-outline-danger" @click="openModal('delete', item)">刪除</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary" @click.prevent="openModal('edit', item)">編輯</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger" @click.prevent="openModal('delete', item)">刪除</button>
                   </div>
                 </td>
               </tr>
@@ -112,14 +112,14 @@
                   </div>
                   <!-- 不太清楚這裡這樣判斷的用意是什麼？ -->
                   <div v-if="!tempProduct.imagesUrl.length || tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]">
-                    <button class="btn btn-sm btn-outline-primary d-block w-100" type="button" @click="tempProduct.imagesUrl.push('')">新增圖片</button>
+                    <button class="btn btn-sm btn-outline-primary d-block w-100" type="button" @click.prevent="tempProduct.imagesUrl.push('')">新增圖片</button>
                   </div>
                   <div v-else>
-                    <button class="btn btn-sm btn-outline-danger d-block w-100" type="button" @click="tempProduct.imagesUrl.pop()">刪除圖片</button>
+                    <button class="btn btn-sm btn-outline-danger d-block w-100" type="button" @click.prevent="tempProduct.imagesUrl.pop()">刪除圖片</button>
                   </div>
                 </div>
                 <div v-else>
-                  <button class="btn btn-sm btn-outline-primary d-block w-100" type="button" @click="addImage">新增圖片</button>
+                  <button class="btn btn-sm btn-outline-primary d-block w-100" type="button" @click.prevent="addImage">新增圖片</button>
                 </div>
               </div>
               <!-- Right -->
@@ -175,7 +175,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" @click="updateProduct">確認</button>
+            <button type="button" class="btn btn-primary" @click.prevent="updateProduct">確認</button>
           </div>
         </div>
       </div>
@@ -194,7 +194,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-danger" @click="deleteProduct">確認刪除</button>
+            <button type="button" class="btn btn-danger" @click.prevent="deleteProduct">確認刪除</button>
           </div>
         </div>
       </div>

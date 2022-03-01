@@ -53,13 +53,13 @@
                 <td width="150">
                   <!-- <span class="text-success" v-if="item.is_enabled">啟用</span>
                   <span v-else>未啟用</span> -->
-                  <button type="button" class="btn btn-primary" v-if="item.is_enabled" @click="
+                  <button type="button" class="btn btn-primary" v-if="item.is_enabled" @click.prevent="
                   isEnabled(item, item.is_enabled)">啟用</button>
-                  <button type="button" class="btn btn-primary" v-else @click="
+                  <button type="button" class="btn btn-primary" v-else @click.prevent="
                   isEnabled(item, item.is_enabled)">未啟用</button>
                 </td>
                 <td width="120">
-                  <button type="button" class="btn btn-primary" @click="
+                  <button type="button" class="btn btn-primary" @click.prevent="
 viewDetails(item)">查看細節</button>
                 </td>
               </tr>

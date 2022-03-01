@@ -22,6 +22,9 @@
           </li>
         </ul>
       </div>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-outline-primary" type="button" @click.prevent="logout">登出</button>
+      </div>
     </div>
   </nav>
   <router-view v-if="checkSuccess"></router-view>
@@ -49,6 +52,16 @@ export default {
         .catch(() => {
           alert('登入失敗，請重新登入');
           this.$router.push({ name: 'login' });
+        });
+    },
+    logout() {
+      this.axios.post(`${process.env.VUE_APP_API}/logout`)
+        .then((res) => {
+          alert(res.data.message);
+          this.$router.push({ name: 'login' });
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
   },

@@ -27,7 +27,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="addToCart(product.id, qty)"
+              @click.prevent="addToCart(product.id, qty)"
             >
               加入購物車
             </button>
@@ -70,7 +70,6 @@ export default {
         product_id: id,
         qty,
       };
-      console.log(data);
       this.isLoadingItem = id;
       this.axios.post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`, { data })
         .then((res) => {

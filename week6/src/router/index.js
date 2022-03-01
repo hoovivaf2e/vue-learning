@@ -36,17 +36,17 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: () => import('../views/DashboardView.vue'),
+    component: () => import('../views/Dashboard/DashboardView.vue'),
     children: [
       {
-        path: 'adminproducts',
+        path: 'products',
         name: 'products',
-        component: () => import('../views/AdminProducts.vue'),
+        component: () => import('../views/Dashboard/AdminProducts.vue'),
       },
       {
         path: 'coupon',
         name: 'coupon',
-        component: () => import('../views/AdminCoupon.vue'),
+        component: () => import('../views/Dashboard/AdminCoupon.vue'),
       },
     ],
   },

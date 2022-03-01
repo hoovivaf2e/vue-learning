@@ -6,7 +6,7 @@
       <button
         class="btn btn-outline-danger"
         type="button"
-        @click="clearCart" :disabled="cartData.carts.length === 0"
+        @click.prevent="clearCart" :disabled="cartData.carts.length === 0"
       >
         <span v-show="isLoadingItem === 1 " class="spinner-grow spinner-grow-sm"></span>
         清空購物車
@@ -26,7 +26,7 @@
           <tr v-for="item in cartData.carts" :key="item.id">
             <td>
               <button type="button" class="btn btn-outline-danger btn-sm"
-                @click="removeCartItem(item.id)">
+                @click.prevent="removeCartItem(item.id)">
                 x
               </button>
             </td>
@@ -191,6 +191,7 @@ export default {
           alert(res.data.message);
           this.getCart();
           this.isLoadingItem = '';
+          emitter.emit('get-cart');
         })
         .catch((err) => {
           alert(err.data.message);

@@ -18,7 +18,7 @@
                 class="btn btn-primary">
                 查看更多
                 </router-link>
-                <button class="btn btn-danger" @click="addToCart(product.id)">加入購物車</button>
+                <button class="btn btn-danger" @click.prevent="addToCart(product.id)">加入購物車</button>
               </div>
             </div>
           </div>
@@ -44,8 +44,8 @@ export default {
         .then((res) => {
           this.products = res.data.products;
         })
-        .catch(() => {
-
+        .catch((err) => {
+          console.log(err);
         });
     },
     addToCart(id, qty = 1) {
@@ -53,7 +53,6 @@ export default {
         product_id: id,
         qty,
       };
-      console.log(data);
       this.isLoadingItem = id;
       this.axios.post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`, { data })
         .then((res) => {

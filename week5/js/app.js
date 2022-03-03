@@ -1,4 +1,6 @@
 import userProductModal from './productModal.js';
+// import Loading from 'vue-loading-overlay';
+// import 'vue-loading-overlay/dist/vue-loading.css';
 
 const { defineRule, Form, Field, ErrorMessage, configure } = VeeValidate;
 const { required, email, min, max } = VeeValidateRules;
@@ -23,6 +25,7 @@ Vue.createApp({
     VForm: Form,
     VField: Field,
     ErrorMessage: ErrorMessage,
+    // Loading,
   },
   data() {
     return {
@@ -32,6 +35,8 @@ Vue.createApp({
       products: [],
       productId: '',
       isLoadingItem: '',
+      isLoading: false,
+      fullPage: true,
       form: {
         user: {
           name: '',
